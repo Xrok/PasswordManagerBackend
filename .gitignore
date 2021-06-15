@@ -1,6 +1,7 @@
 
 # Created by https://www.toptal.com/developers/gitignore/api/linux,macos,node,visualstudiocode,dotenv
 # Edit at https://www.toptal.com/developers/gitignore?templates=linux,macos,node,visualstudiocode,dotenv
+package-lock.json
 
 ### dotenv ###
 .env
