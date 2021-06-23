@@ -8,7 +8,7 @@ const registerController = async (req: Request, res: Response) => {
         const password = req.body.password;
         const salt = 'salt';
         createUser({ username, password, salt } as UserInterface);
-        res.status(201).send(`{ "username": '${username}' }`);
+        res.status(201).send(`{ "username": "${username}" }`);
     } catch (error) {
         res.status(500).send('{"error":"Error creating new user."}');
     }
