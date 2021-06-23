@@ -1,18 +1,17 @@
-import  express  from "express";
-import { fetchAccounts } from "../controller/fetchAccounts.controller";
-import { addAccountController } from "../controller/addAccount.controller";
-import { privateRouteMiddleware } from "../middleware/private-route.middleware";
-import { deleteAccountController } from "../controller/deleteAccount.controller";
+import express from 'express';
+import { fetchAccounts } from '../controller/fetchAccounts.controller';
+import { addAccountController } from '../controller/addAccount.controller';
+import { privateRouteMiddleware } from '../middleware/private-route.middleware';
+import { deleteAccountController } from '../controller/deleteAccount.controller';
 
-const router = express.Router()
+const router = express.Router();
 
-router.use(privateRouteMiddleware)
+router.use(privateRouteMiddleware);
 
+router.post('/all', privateRouteMiddleware, fetchAccounts);
 
-router.post('/all',privateRouteMiddleware,fetchAccounts)
+router.post('/', privateRouteMiddleware, addAccountController);
 
-router.post('/',privateRouteMiddleware,addAccountController)
+router.patch('/', privateRouteMiddleware, deleteAccountController);
 
-router.delete('/',privateRouteMiddleware,deleteAccountController)
-
-export {router as userRouter}
+export { router as userRouter };

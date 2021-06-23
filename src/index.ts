@@ -8,9 +8,9 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const { NODE_ENV, MONGO_URL_ATLAS, MONOGO_URL_LOCAL, SERVER_PORT } = process.env;
+const { ENVIRONMENT, MONGO_URL_ATLAS, MONOGO_URL_LOCAL, SERVER_PORT } = process.env;
 
-const MONGO_URL = NODE_ENV == 'development' ? MONOGO_URL_LOCAL : MONGO_URL_ATLAS;
+const MONGO_URL = ENVIRONMENT == 'development' ? MONOGO_URL_LOCAL : MONGO_URL_ATLAS;
 
 const app = express();
 app.use(bodyParser.json());
