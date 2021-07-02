@@ -8,7 +8,7 @@ const router = express.Router()
 
 router.post('/register',registerController)
 
-router.post('/login',privateRouteMiddleware,loginController)
+router.post('/login',loginController)
 
 
 export {router as coreRouter}

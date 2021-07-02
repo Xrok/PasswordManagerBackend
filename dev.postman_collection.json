@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "5873de78-2bf2-4aed-a796-0e17a184255a",
-		"name": "prod",
+		"_postman_id": "c3e0533b-eb68-4cbd-a421-391065804a67",
+		"name": "dev",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -75,10 +75,16 @@
 			"name": "fetchAccounts",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\":\"xrok\",\n    \"password\":\"1234\"\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -102,10 +108,16 @@
 			"name": "addAccount",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\":\"xrok\",\n    \"password\":\"1234\",\n    \"webPage\":\"facebook.com\",\n    \"accUsername\":\"fbXrok\",\n    \"accPassword\":\"fb1234\"\n}",
+					"raw": "{\n    \"webPage\":\"facebook.com\",\n    \"accUsername\":\"fbXrok\",\n    \"accPassword\":\"fb1234\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -127,11 +139,17 @@
 		{
 			"name": "deleteAccount",
 			"request": {
-				"method": "DELETE",
-				"header": [],
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\":\"xrok\",\n    \"password\":\"1234\",\n    \"webPage\":\"facebook.com\",\n    \"accUsername\":\"fbXrok\"\n}",
+					"raw": "{\n    \"webPage\":\"facebook.com\",\n    \"accUsername\":\"fbXrok\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -174,7 +192,11 @@
 	"variable": [
 		{
 			"key": "url",
-			"value": "https://password-manager-utec.herokuapp.com/"
+			"value": "localhost:3000"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inhyb2siLCJpYXQiOjE2MjUyNDc4NzEsImV4cCI6MTYyNTI1MTQ3MX0.Ko21-yCx4O0mg59WzhjBLlUxS43R-Zfy3k4DzHp6IDw"
 		}
 	]
 }

@@ -10,6 +10,4 @@ Can be tested with `prod.postman_collection.json`
 
 dont forget to create .env based on env.example
 
-### to-do
-- check unique username
 

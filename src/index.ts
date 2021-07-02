@@ -8,11 +8,12 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const { ENVIRONMENT, MONGO_URL_ATLAS, MONOGO_URL_LOCAL, SERVER_PORT } = process.env;
+const { NODE_ENV, MONGO_URL_ATLAS, MONOGO_URL_LOCAL, SERVER_PORT } = process.env;
 
-const MONGO_URL = ENVIRONMENT == 'development' ? MONOGO_URL_LOCAL : MONGO_URL_ATLAS;
+const MONGO_URL = NODE_ENV == 'development' ? MONOGO_URL_LOCAL : MONGO_URL_ATLAS;
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(loggerMiddleware);
 
@@ -20,7 +21,7 @@ app.get('/', (req, res) => {
     res.send('Hello world!');
 });
 app.use(coreRouter);
-app.use('/user', userRouter);
+app.use('/user',userRouter);
 
 mongoose.connect(
     MONGO_URL,
@@ -30,12 +31,13 @@ mongoose.connect(
         useUnifiedTopology: true,
     },
     () => {
-        console.log('connected to database');
+        console.log(`connected to database ${MONGO_URL} ${NODE_ENV}`);
     }
 );
 
 // start the Express server
 app.listen(process.env.PORT || SERVER_PORT, () => {
     // tslint:disable-next-line:no-console
+
     console.log(`server started at http://localhost:${process.env.PORT || SERVER_PORT}`);
 });
