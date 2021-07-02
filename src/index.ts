@@ -31,7 +31,7 @@ mongoose.connect(
         useUnifiedTopology: true,
     },
     () => {
-        console.log(`connected to database ${MONGO_URL} ${NODE_ENV}`);
+        console.log(`connected to database ${NODE_ENV}`);
     }
 );
 
